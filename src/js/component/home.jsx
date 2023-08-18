@@ -1,26 +1,38 @@
-import React from "react";
+import React, { useState } from 'react';
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+const TrafficLight = () => {
+  const [color, setColor] = useState("red");
+  const [colors, setColors] = useState(["red", "yellow", "green"]);
 
-//create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+  const cycleColor = (prevColor) => {
+    const order = ["red", "yellow", "green", "purple"];
+    const index = order.indexOf(prevColor);
+    return order[(index + 1) % order.length];
+  };
+
+  return (
+    <div className="container">
+      <div className="trafficLight">
+        {colors.map(clr => (
+          <div key={clr}
+               className={`light ${clr} ${color === clr ? "glow" : ""}`}
+               onClick={() => setColor(clr)} />
+        ))}
+      </div>
+      <div className="controls">
+        <button onClick={() => setColor(prev => cycleColor(prev))}>
+          Cycle Color
+        </button>
+        <button onClick={() => {
+          if (!colors.includes("purple")) {
+            setColors([...colors, "purple"]);
+          }
+        }}>
+          Add Purple
+        </button>
+      </div>
+    </div>
+  );
 };
 
-export default Home;
+export default TrafficLight;

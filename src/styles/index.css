@@ -1,12 +1,89 @@
+:root {
+    --red-glow-1: #ff9999;
+    --red-glow-2: #ff6666;
 
-/* 
+    --yellow-glow-1: #ffff99;
+    --yellow-glow-2: #ffff66;
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+    --green-glow-1: #99ff99;
+    --green-glow-2: #66ff66;
 
-*/
+    --purple-glow-1: #cc99cc;
+    --purple-glow-2: #cc66cc;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trafficLight {
+  width: 80px;
+  background-color: #333;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.light {
+  width: 50px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin: 8px 0;
+}
+
+.light.red {
+    background-color: red;
+}
+
+.light.yellow {
+    background-color: yellow;
+}
+
+.light.green {
+    background-color: green;
+}
+
+.light.purple {
+    background-color: purple;
+}
+
+.glow {
+    box-shadow:
+        0 0 20px var(--glow-1),
+        0 0 30px var(--glow-1),
+        0 0 40px var(--glow-2),
+        0 0 50px var(--glow-2),
+        0 0 60px var(--glow-2);
+}
+
+.red.glow {
+    --glow-1: var(--red-glow-1);
+    --glow-2: var(--red-glow-2);
+}
+
+.yellow.glow {
+    --glow-1: var(--yellow-glow-1);
+    --glow-2: var(--yellow-glow-2);
+}
+
+.green.glow {
+    --glow-1: var(--green-glow-1);
+    --glow-2: var(--green-glow-2);
+}
+
+.purple.glow {
+    --glow-1: var(--purple-glow-1);
+    --glow-2: var(--purple-glow-2);
+}
